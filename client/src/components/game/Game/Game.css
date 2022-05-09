@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1800px;
+  margin: 60px;
+  padding: 40px 0;
+  background-color: #e7fdf8;
+  border-radius: 20px;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.game-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

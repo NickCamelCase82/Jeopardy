@@ -1,0 +1,26 @@
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #0074f8;
+  border-radius: 3px;
+  width: 100px;
+  height: 65px;
+  transition: .5s;
+  user-select: none;
+}
+
+.score:hover {
+  color: aliceblue;
+  background: #0074f8;
+}
+
+.score:active {
+  transition: none;
+  color: aliceblue;
+  background-image: linear-gradient(to left, #051937, #022e63, #004592, #005cc4, #0074f8);
+}
