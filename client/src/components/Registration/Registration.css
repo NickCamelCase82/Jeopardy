@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'PT Sans Caption', sans-serif;
+  margin: 40px;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

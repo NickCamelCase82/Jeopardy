@@ -1,0 +1,21 @@
+.btn {
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 1rem;
+  transition: .5s;
+}
+
+.btn:hover {
+  background-color: rgb(88, 166, 255);
+}
+
+.btn:active {
+  border: 2px solid black;
+  transition: none;
+}
