@@ -7,7 +7,7 @@ const PORT = process.env.PORT ?? 3001;
 const cookieParser = require('cookie-parser'); 
 const expressSession = require('express-session'); 
 const FileStore = require('session-file-store')(expressSession);
-// const { sequelize } = require('./db/models');
+const { sequelize } = require('./db/models');
 // создает файлы на сессии
 const sessionConfig = {
   name: 'coockie',
@@ -43,16 +43,16 @@ app.use((req, res, next) => {
 });
 
 // подключаем роутеры
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 
-// app.use('/', usersRouter);
+app.use('/', usersRouter);
 
 app.listen(PORT, async () => {
   console.log('Server is listening on a port:', PORT);
-  // try {
-  //   await sequelize.authenticate();
-  //   console.log('DB connection succesful');
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
+  try {
+    await sequelize.authenticate();
+    console.log('DB connection succesful');
+  } catch (error) {
+    console.log(error.message);
+  }
 });
