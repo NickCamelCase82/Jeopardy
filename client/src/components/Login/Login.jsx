@@ -1,7 +1,8 @@
-import  React  from "react";
-import Input from "../common/Input/Input";
-import Button from "../common/Button/Button";
-import "./Login.css";
+import { React } from 'react';
+import Input from '../common/Input/Input';
+import Button from '../common/Button/Button';
+import './Login.css';
+
 
 const Login = ({ handleInputs, input, getLogin}) => {
   return (

@@ -1,7 +1,7 @@
-import { React } from "react";
-import Input from "../common/Input/Input";
-import Button from "../common/Button/Button";
-import "./Registration.css";
+import { React } from 'react';
+import Input from '../common/Input/Input';
+import Button from '../common/Button/Button';
+import './Registration.css';
 
 const Registration = ({getReg, input, handleInputs}) => {
   return (

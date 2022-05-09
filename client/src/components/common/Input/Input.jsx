@@ -1,11 +1,17 @@
-import { React } from "react";
-import PropTypes from "prop-types";
+import { React } from 'react';
+import PropTypes from 'prop-types';
+import './Input.css';
 
-const Input = ({ name, placeholder, value, type, handleInputs }) => {
+const Input = ({ name, placeholder, type }) => {
   return (
     <>
       <label htmlFor={name} />
-      <input id={name} placeholder={placeholder} name={name} value={value} onChange={(e) => handleInputs(e)} type={type ?? 'text'}/>
+      <input
+        className="field"
+        id={name}
+        placeholder={placeholder}
+        type={type}
+      />
     </>
   );
 };
@@ -13,8 +19,7 @@ const Input = ({ name, placeholder, value, type, handleInputs }) => {
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default Input;
