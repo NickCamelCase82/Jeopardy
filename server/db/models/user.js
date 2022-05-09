@@ -13,11 +13,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      login: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true,
+      login: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notEmpty: true,
+        },
       },
     },
     {
