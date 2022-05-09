@@ -1,7 +1,8 @@
 const usersRouter = require('express').Router();
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 const validateForm = require('../middleware/validateForm');
+const validateLogin = require('../middleware/validateLogin');
 
 // регистрация
 usersRouter.post('/reg', validateForm, async (req, res) => {
@@ -11,8 +12,14 @@ usersRouter.post('/reg', validateForm, async (req, res) => {
       where: { email },
     });
 
+    const userLogin = await User.findOne({
+      where: { login },
+    });
+
     if (user) {
       res.status(400).send({ error: 'Пользователь с таким email уже зарегистрирован.' });
+    } else if (userLogin) {
+      res.status(400).send({ error: 'Пользователь с таким именем уже зарегистрирован.' });
     } else {
       const newUser = await User.create({
         email,
@@ -30,7 +37,7 @@ usersRouter.post('/reg', validateForm, async (req, res) => {
 });
 
 // login
-usersRouter.post('/login', async (req, res) => {
+usersRouter.post('/login', validateLogin, async (req, res) => {
   try {
     const { login, password } = req.body;
     const user = await User.findOne({
