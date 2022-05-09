@@ -1,22 +1,22 @@
-require("dotenv").config();
-const express = require("express");
-const path = require("path");
+require('dotenv').config();
+const express = require('express');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 
-const cookieParser = require('cookie-parser'); 
-const expressSession = require('express-session'); 
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
 const FileStore = require('session-file-store')(expressSession);
 const { sequelize } = require('./db/models');
 
-const dbConnect = require("./db/dbConnectionCheck");
+// const dbConnect = require('./db/dbConnectionCheck');
 
 // создает файлы на сессии
 const sessionConfig = {
-  name: "coockie",
+  name: 'coockie',
   store: new FileStore(),
-  secret: "keyboard cat",
+  secret: 'keyboard cat',
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
     httpOnly: true,
@@ -25,22 +25,22 @@ const sessionConfig = {
   saveUninitialized: false,
 };
 
-dbConnect();
+// dbConnect();
 
 app.use(expressSession(sessionConfig));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
-  const accessList = ["http://localhost:3000", "http://localhost:3001"];
-  const origin = req.get("origin");
+  const accessList = ['http://localhost:3000', 'http://localhost:3001'];
+  const origin = req.get('origin');
   if (accessList.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Headers", "Content-type");
-    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Headers', 'Content-type');
+    res.header('Access-Control-Allow-Credentials', true);
   }
   next();
 });

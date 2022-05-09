@@ -3,15 +3,15 @@ import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 import './Registration.css';
 
-const Registration = () => {
+const Registration = ({getReg, input, handleInputs}) => {
   return (
     <div className="register">
       <form>
-        <h2>Регистрация</h2>
-        <Input name="login" placeholder="Введите логин" type="text" />
-        <Input name="email" placeholder="Введите емаил" type="email" />
-        <Input name="password" placeholder="Введите пароль" type="password" />
-        <Button />
+        <div>Регистрация</div>
+        <input name="login" placeholder="Введите логин" onChange={handleInputs} value={input.login?? ''}/>
+        <input name="email" placeholder="Введите емаил" onChange={handleInputs} value={input.email?? ''}/>
+        <input type="password" name="password" placeholder="Введите пароль" onChange={handleInputs} value={input.password?? ''}/>
+        <button onClick={getReg}/>
       </form>
     </div>
   );
