@@ -1,9 +1,9 @@
-import { React } from "react";
+import { React } from 'react';
 
 const Button = () => {
   return (
     <>
-      <button>Отправить</button>
+      <button className="btn">Отправить</button>
     </>
   );
 };
