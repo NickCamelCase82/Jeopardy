@@ -10,8 +10,7 @@ const expressSession = require('express-session');
 const FileStore = require('session-file-store')(expressSession);
 const { sequelize } = require('./db/models');
 
-// eslint-disable-next-line import/extensions
-const dbConnect = require('./db/dbConnectionCheck');
+// const dbConnect = require('./db/dbConnectionCheck');
 
 // создает файлы на сессии
 const sessionConfig = {
@@ -26,7 +25,7 @@ const sessionConfig = {
   saveUninitialized: false,
 };
 
-dbConnect();
+// dbConnect();
 
 app.use(expressSession(sessionConfig));
 app.use(cookieParser());
