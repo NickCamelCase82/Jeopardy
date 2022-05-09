@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const FileStore = require("session-file-store")(expressSession);
 const dbConnect = require("./db/dbConnectionCheck");
-// const { sequelize } = require('./db/models');
+//const { sequelize } = require("./db/models");
 // создает файлы на сессии
 const sessionConfig = {
   name: "coockie",
