@@ -1,11 +1,17 @@
-import { React } from "react";
-import PropTypes from "prop-types";
+import { React } from 'react';
+import PropTypes from 'prop-types';
+import './Input.css';
 
-const Input = ({ name, placeholder }) => {
+const Input = ({ name, placeholder, type }) => {
   return (
     <>
       <label htmlFor={name} />
-      <input id={name} placeholder={placeholder} />
+      <input
+        className="field"
+        id={name}
+        placeholder={placeholder}
+        type={type}
+      />
     </>
   );
 };
@@ -13,6 +19,7 @@ const Input = ({ name, placeholder }) => {
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default Input;
