@@ -1,8 +1,6 @@
 {
   "development": {
-    "username": "nick",
-    "password": null,
-    "database": "jeopardy",
+    "use_env_variable": "DB_URL",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
