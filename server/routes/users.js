@@ -1,5 +1,5 @@
 const usersRouter = require('express').Router();
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 const validateForm = require('../middleware/validateForm');
 
