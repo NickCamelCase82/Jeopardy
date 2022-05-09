@@ -1,7 +1,14 @@
-// import { React } from "react";
+import { React } from "react";
+import Login from "./components/Login/Login";
+import Registration from "./components/Registration/Registration";
 
 function App() {
-  return null;
+  return (
+    <>
+      <Registration />
+      <Login />
+    </>
+  );
 }
 
 export default App;

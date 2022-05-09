@@ -1,15 +1,14 @@
 import { React } from "react";
 import Input from "../common/Input/Input";
 import Button from "../common/Button/Button";
-import "./Registration.css";
+import "./Login.css";
 
-const Registration = () => {
+const Login = () => {
   return (
-    <div className="register">
+    <div className="login">
       <form>
-        <div>Регистрация</div>
+        <div>Авторизация</div>
         <Input name="login" placeholder="Введите логин" />
-        <Input name="email" placeholder="Введите емаил" />
         <Input name="password" placeholder="Введите пароль" />
         <Button />
       </form>
@@ -17,4 +16,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
