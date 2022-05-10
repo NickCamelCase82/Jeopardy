@@ -1,17 +1,43 @@
-import { React } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 import './Login.css';
 
+const Login = ({ getLogin }) => {
+  const input = useSelector((store) => store.inputs);
+  const dispatch = useDispatch();
 
-const Login = ({ handleInputs, input, getLogin}) => {
   return (
     <div className="login">
       <form>
         <div>Авторизация</div>
-        <input name="login" placeholder="Введите логин" onChange={handleInputs} value={input.login?? ''}/>
-        <input type="password" name="password" placeholder="Введите пароль" onChange={handleInputs} value={input.password?? ''}/>
-        <button onClick={getLogin}/>
+        <Input
+          name="login"
+          placeholder="Введите логин"
+          onChange={(event) =>
+            dispatch({
+              type: 'INPUT_TYPING',
+              payload: { [event.target.name]: event.target.value },
+            })
+          }
+          value={input.login ?? ''}
+        />
+
+        <Input
+          type="password"
+          name="password"
+          placeholder="Введите пароль"
+          onChange={(event) =>
+            dispatch({
+              type: 'INPUT_TYPING',
+              payload: { [event.target.name]: event.target.value },
+            })
+          }
+          value={input.password ?? ''}
+        />
+
+        <Button onClick={getLogin} />
       </form>
     </div>
   );

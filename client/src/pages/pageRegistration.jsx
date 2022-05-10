@@ -10,11 +10,6 @@ export default function PageRegistration() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleInputs (event) {
-    console.log('input', event.target)
-    dispatch({ type: 'INPUT_TYPING', payload: { [event.target.name]: event.target.value } });
-  }
-
   async function getReg (event) {
     event.preventDefault()
    
@@ -49,7 +44,7 @@ export default function PageRegistration() {
     <div>
       <h3>Регистрация</h3>
       {error.error && <h4 className='error'>{error.error}</h4>}
-      < Registration input={input} handleInputs={handleInputs} getReg={getReg}/>
+      < Registration getReg={getReg}/>
     </div>
   )
 }

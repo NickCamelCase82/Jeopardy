@@ -47,8 +47,10 @@ app.use((req, res, next) => {
 
 // подключаем роутеры
 const usersRouter = require('./routes/users');
+const gameRoute = require('./routes/game');
 
 app.use('/', usersRouter);
+app.use('/', gameRoute);
 
 app.listen(PORT, async () => {
   console.log('Server is listening on a port:', PORT);
