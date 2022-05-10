@@ -7,5 +7,6 @@ const initState = {
   game3: [],
   game4: [],
   game5: [],
+  result: 0,
 };
 export default initState;
