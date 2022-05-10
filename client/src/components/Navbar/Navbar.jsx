@@ -18,9 +18,12 @@ export default function Navbar() {
   return (
     <div>
       {user.id ? (
-        <Link to="/" onClick={getlogout}>
-          Выйти
-        </Link>
+        <>
+          <Link to="/game">Играть</Link>
+          <Link to="/" onClick={getlogout}>
+            Выйти
+          </Link>
+        </>
       ) : (
         <>
           <Link to="/game">Играть</Link>
