@@ -7,19 +7,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      qId: {
+        type: Sequelize.INTEGER,
+      },
+      category: {
+        type: Sequelize.STRING,
+      },
       question: {
         type: Sequelize.STRING,
       },
-      question2: {
-        type: Sequelize.STRING,
-      },
-      question3: {
-        type: Sequelize.STRING,
-      },
-      question4: {
-        type: Sequelize.STRING,
-      },
-      question5: {
+      answer: {
         type: Sequelize.STRING,
       },
       createdAt: {
