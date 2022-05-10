@@ -14,51 +14,42 @@ const Game = () => {
   const game3 = useSelector((store) => store.game3);
   const game4 = useSelector((store) => store.game4);
   const game5 = useSelector((store) => store.game5);
-  const store = useSelector((store) => store);
+  const result = useSelector((store) => store.result);
   const [loading, setLoading] = useState(true);
 
-  console.log('------------->', store);
   useEffect(() => {
     fetch('http://localhost:3001/game1')
       .then((data) => data.json())
       .then((data) => {
-        console.log('data===========>', data);
         dispatch({ type: 'SET_GAME', payload: data });
       });
 
     fetch('http://localhost:3001/game2')
       .then((data) => data.json())
       .then((data) => {
-        console.log('data===========>', data);
         dispatch({ type: 'SET_GAME2', payload: data });
       });
 
     fetch('http://localhost:3001/game3')
       .then((data) => data.json())
       .then((data) => {
-        console.log('data===========>', data);
         dispatch({ type: 'SET_GAME3', payload: data });
       });
 
     fetch('http://localhost:3001/game4')
       .then((data) => data.json())
       .then((data) => {
-        console.log('data===========>', data);
         dispatch({ type: 'SET_GAME4', payload: data });
       });
 
     fetch('http://localhost:3001/game5')
       .then((data) => data.json())
       .then((data) => {
-        console.log('data===========>', data);
         dispatch({ type: 'SET_GAME5', payload: data });
         setLoading(false);
       });
   }, []);
 
-  console.log('loading------>', loading);
-
-  // const [modal, setModal] = useState(false);
 
   return (
     <div className="game">
@@ -66,6 +57,7 @@ const Game = () => {
         'идет загрузка'
       ) : (
         <>
+          <h5>Счёт: {result}</h5>
           <div className="game-item">
             <Category title={game1 && game1[0].category} />
             {['200', '400', '600', '800'].map((score, index) => (
@@ -96,11 +88,6 @@ const Game = () => {
               <Score score={score} key={index + 1} category="5" />
             ))}
           </div>
-          {/* <Modal
-          question="Тут будет вопрос?"
-          isOpened={modal}
-          onModalClose={() => setModal(false)}
-        /> */}
         </>
       )}
     </div>

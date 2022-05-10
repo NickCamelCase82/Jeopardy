@@ -7,36 +7,75 @@ import { useDispatch, useSelector } from 'react-redux';
 const Modal = (props) => {
   const dispatch = useDispatch();
 
-  const game1 = useSelector((store) => store.game1); // game1[0].answer
-  const game2 = useSelector((store) => store.game2); // game2[0].answer
-  const game3 = useSelector((store) => store.game3); // game3[0].answer
-  const game4 = useSelector((store) => store.game4); // game4[0].answer
-  const game5 = useSelector((store) => store.game5); // game5[0].answer
-  const [rigth, setRigth] = useState(false);
+  const game1 = useSelector((store) => store.game1);
+  const game2 = useSelector((store) => store.game2);
+  const game3 = useSelector((store) => store.game3);
+  const game4 = useSelector((store) => store.game4);
+  const game5 = useSelector((store) => store.game5); 
+
+  const [right, setRight] = useState('');
 
   const answer = useSelector((store) => store.inputs.answer);
 
   const check = () => {
+
+    let score = 0;
+    switch (props.numberQ) {
+      case 0:
+        score = 200
+        break;
+      case 1:
+          score = 400
+          break;
+      case 2:
+        score = 600
+        break;
+      case 3:
+        score = 800
+        break;
+      default:
+        break;
+    }
     if (props.category == 1) {
       if (answer === game1[props.numberQ].answer) {
-        setRigth(true);
-      } 
+        setRight('Правильно');
+        dispatch({ type: 'SET_ANSWER', payload: score})
+      } else {
+        setRight('Неверно');
+        dispatch({ type: 'WRONG_ANSWER', payload: score})
+      }
     } else if (props.category == 2) {
       if (answer === game2[props.numberQ].answer) {
-        setRigth(true);
-      } 
+        setRight('Правильно');
+        dispatch({ type: 'SET_ANSWER', payload: score})
+      } else {
+        setRight('Неверно');
+        dispatch({ type: 'WRONG_ANSWER', payload: score})
+      }
     } else if (props.category == 3) {
       if (answer === game3[props.numberQ].answer) {
-        setRigth(true);
-      } 
+        setRight('Правильно');
+        dispatch({ type: 'SET_ANSWER', payload: score})
+      } else {
+        setRight('Неверно');
+        dispatch({ type: 'WRONG_ANSWER', payload: score})
+      }
     } else if (props.category == 4) {
       if (answer === game4[props.numberQ].answer) {
-        setRigth(true);
-      } 
+        setRight('Правильно');
+        dispatch({ type: 'SET_ANSWER', payload: score})
+      } else {
+        setRight('Неверно');
+        dispatch({ type: 'WRONG_ANSWER', payload: score})
+      }
     } else if (props.category == 5) {
       if (answer === game5[props.numberQ].answer) {
-        setRigth(true);
-      } 
+        setRight('Правильно');
+        dispatch({ type: 'SET_ANSWER', payload: score})
+      } else {
+        setRight('Неверно');
+        dispatch({ type: 'WRONG_ANSWER', payload: score})
+      }
     }
 
     dispatch({
@@ -44,15 +83,6 @@ const Modal = (props) => {
       payload: {},
     });
   };
-
-  // if (!props.isOpened) {
-  //   dispatch({
-  //     type: 'INPUT_CLEAR',
-  //     payload: {},
-  //   });
-  // }
-
-  console.log(props.isOpened);
 
   return (
     <div
@@ -76,7 +106,7 @@ const Modal = (props) => {
             placeholder="Ваш ответ"
           />
           <button onClick={check} />
-          <div>{rigth && <p>Ответ правильный</p>}</div>
+          <div>{right && <p>{right}</p>}</div>
         </div>
       </div>
     </div>

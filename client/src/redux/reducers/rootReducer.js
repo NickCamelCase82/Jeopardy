@@ -7,6 +7,7 @@ import {gameReducer2} from './gameReducer2';
 import {gameReducer3} from './gameReducer3';
 import {gameReducer4} from './gameReducer4';
 import {gameReducer5} from './gameReducer5';
+import {resultReducer} from './resultReducer';
 
 const rootReducer = combineReducers({
   inputs: inputsReducer,
@@ -17,5 +18,6 @@ const rootReducer = combineReducers({
   game3: gameReducer3,
   game4: gameReducer4,
   game5: gameReducer5,
+  result: resultReducer,
 });
 export default rootReducer;
