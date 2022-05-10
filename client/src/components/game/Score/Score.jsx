@@ -14,61 +14,71 @@ const Score = ({ score, category }) => {
 
   let question;
   let game;
+  let numberQ;
 
   switch (category) {
     case '1':
-      game = game1
-      break
+      game = game1;
+      break;
 
     case '2':
-      game = game2
-      break
+      game = game2;
+      break;
 
     case '3':
-      game = game3
-      break
+      game = game3;
+      break;
 
     case '4':
-      game = game4
-      break
+      game = game4;
+      break;
 
     case '5':
-        game = game5
-        break
+      game = game5;
+      break;
+
     default:
-      break
+      break;
   }
 
   switch (score) {
-      case '200':
-        question = game[0].question
-        break
-      case '400':
-        question = game[1].question
-        break
-      
-      case '600':
-        question = game[2].question
-        break
-  
-      case '800':
-        question = game[3].question
-        break
-  
-      default:
-        break
-    }
-    
+    case '200':
+      question = game[0].question;
+      numberQ = 0;
+      break;
+    case '400':
+      question = game[1].question;
+      numberQ = 1;
+      break;
+
+    case '600':
+      question = game[2].question;
+      numberQ = 2;
+      break;
+
+    case '800':
+      question = game[3].question;
+      numberQ = 3;
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <>
-      <div onClick={() => setModal(true)} className="score">{score}</div>
+      <div onClick={() => setModal(true)} className="score">
+        {score}
+      </div>
       <Modal
-          question={question}
-          isOpened={modal}
-          onModalClose={() => setModal(false)}
-        />
+        question={question}
+        category={category}
+        numberQ={numberQ}
+        isOpened={modal}
+        onModalClose={() => setModal(false)}
+      />
     </>
-  ) 
+  );
 };
 
 Score.propTypes = {
