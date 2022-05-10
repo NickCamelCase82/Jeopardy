@@ -17,21 +17,32 @@ const Modal = (props) => {
   const answer = useSelector((store) => store.inputs.answer);
 
   const check = () => {
-    if (answer === game1[0].answer) {
-      setRigth(true);
-      console.log('btn');
-      console.log(answer);
-      console.log(game1[0].answer);
-      // dispatch({
-      //   type: 'INPUT_CLEAR',
-      //   payload: {},
-      // });
+    if (props.category == 1) {
+      if (answer === game1[props.numberQ].answer) {
+        setRigth(true);
+      } 
+    } else if (props.category == 2) {
+      if (answer === game2[props.numberQ].answer) {
+        setRigth(true);
+      } 
+    } else if (props.category == 3) {
+      if (answer === game3[props.numberQ].answer) {
+        setRigth(true);
+      } 
+    } else if (props.category == 4) {
+      if (answer === game4[props.numberQ].answer) {
+        setRigth(true);
+      } 
+    } else if (props.category == 5) {
+      if (answer === game5[props.numberQ].answer) {
+        setRigth(true);
+      } 
     }
 
-    // dispatch({
-    //   type: 'INPUT_CLEAR',
-    //   payload: {},
-    // });
+    dispatch({
+      type: 'INPUT_CLEAR',
+      payload: {},
+    });
   };
 
   // if (!props.isOpened) {
