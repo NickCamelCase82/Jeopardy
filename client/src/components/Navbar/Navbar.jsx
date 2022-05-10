@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import './Navbar.css';
 
 export default function Navbar() {
   const user = useSelector((store) => store.user);
@@ -16,19 +17,30 @@ export default function Navbar() {
   }
 
   return (
-    <div>
+    <div className="navbarMenu">
       {user.id ? (
         <>
-          <Link to="/game">Играть</Link>
-          <Link to="/" onClick={getlogout}>
+          <Link className="btn btn-outline-primary" to="/game">
+            Играть
+          </Link>
+          <Link className="btn btn-outline-primary" to="/" onClick={getlogout}>
             Выйти
           </Link>
         </>
       ) : (
         <>
-          <Link to="/game">Играть</Link>
-          <Link to="/login">Войти</Link>
-          <Link to="/registration">Регистрация</Link>
+          <Link className="btn btn-outline-primary" to="/game">
+            Играть
+          </Link>
+          <Link className="btn btn-outline-primary" to="/login">
+            Войти
+          </Link>
+          <Link
+            className="regButton btn btn-outline-primary"
+            to="/registration"
+          >
+            Регистрация
+          </Link>
         </>
       )}
     </div>

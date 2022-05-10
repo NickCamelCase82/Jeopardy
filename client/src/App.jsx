@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import PageLogin from './pages/PageLogin';
-import PageRegistration from './pages/PageRegistration';
+import PageLogin from './pages/pageLogin';
+import PageRegistration from './pages/pageRegistration';
 import Main from './components/Main/Main';
+import Game from './components/game/Game/Game';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
