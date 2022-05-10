@@ -1,32 +1,34 @@
-import { React } from "react";
-import { Routes, Route } from "react-router-dom";
-import PageLogin from './pages/PageLogin';
-import PageRegistration from "./pages/PageRegistration";
-import Navbar from "./components/Navbar/Navbar";
-// import Login from "./components/Login/Login";
-// import Registration from "./components/Registration/Registration";
+import React from 'react';
+import Game from './components/game/Game/Game';
+import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
+import { Routes, Route } from 'react-router-dom';
+import PageLogin from './pages/pageLogin';
+import PageRegistration from './pages/pageRegistration';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('http://localhost:3001/session', {
-      credentials: 'include'
-    }).then(data => data.json())
-      .then(user => dispatch({ type: 'USER_LOGIN', payload: user}))
+      credentials: 'include',
+    })
+      .then((data) => data.json())
+      .then((user) => dispatch({ type: 'USER_LOGIN', payload: user }));
   }, [dispatch]);
 
   return (
     <div>
       <header>
-        <Navbar/>
+        <Navbar />
       </header>
-     <Routes>
-        <Route path='/login' element={<PageLogin/>} />
-        <Route path='/registration' element={<PageRegistration/>} />
+      <Routes>
+        <Route path="/login" element={<PageLogin />} />
+        <Route path="/registration" element={<PageRegistration />} />
+        <Route path="/game" element={<Game />} />
       </Routes>
     </div>
   );
