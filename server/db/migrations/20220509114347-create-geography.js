@@ -1,26 +1,23 @@
-"use strict";
+'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Geographies", {
+    await queryInterface.createTable('Geographies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      qId: {
+        type: Sequelize.INTEGER,
+      },
+      category: {
+        type: Sequelize.STRING,
+      },
       question: {
         type: Sequelize.STRING,
       },
-      question2: {
-        type: Sequelize.STRING,
-      },
-      question3: {
-        type: Sequelize.STRING,
-      },
-      question4: {
-        type: Sequelize.STRING,
-      },
-      question5: {
+      answer: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -34,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Geographies");
+    await queryInterface.dropTable('Geographies');
   },
 };
