@@ -1,9 +1,9 @@
 import React from 'react';
 import Game from './components/game/Game/Game';
-
 import { Routes, Route } from 'react-router-dom';
 import PageLogin from './pages/PageLogin';
 import PageRegistration from './pages/PageRegistration';
+import Main from './components/Main/Main';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
@@ -25,6 +25,7 @@ console.log("App")
         <Navbar />
       </header>
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/login" element={<PageLogin />} />
         <Route path="/registration" element={<PageRegistration />} />
         <Route path="/game" element={<Game />} />
