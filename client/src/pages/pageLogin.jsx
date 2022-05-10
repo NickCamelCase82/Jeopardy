@@ -10,10 +10,6 @@ export default function PageLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleInputs (event) {
-    dispatch({ type: 'INPUT_TYPING', payload: { [event.target.name]: event.target.value } });
-  };
-
   async function getLogin (event) {
     event.preventDefault()
    
@@ -45,7 +41,7 @@ export default function PageLogin() {
     <div>
       <h4>Войти в свой профиль</h4>
       {error.error && <h4 className='error'>{error.error}</h4>}
-      <Login handleInputs={handleInputs} input={input} getLogin={getLogin}/>
+      <Login getLogin={getLogin}/>
     </div>
   )
 }
