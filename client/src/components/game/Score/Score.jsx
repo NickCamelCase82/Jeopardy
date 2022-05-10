@@ -1,34 +1,63 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import './Score.css';
 import Modal from '../../Modal/Modal';
 
-const Score = ({ score /* question */ }) => {
+const Score = ({ score, category }) => {
   const [modal, setModal] = useState(false);
-  // console.log(question);
+  const game1 = useSelector((store) => store.game1);
+  const game2 = useSelector((store) => store.game2);
+  const game3 = useSelector((store) => store.game3);
+  const game4 = useSelector((store) => store.game4);
+  const game5 = useSelector((store) => store.game5);
 
-  // let quest;
+  let question;
+  let game;
 
-  // switch (score) {
-  //   case '200':
-  //     quest = question[0].question;
-  //     break;
+  switch (category) {
+    case '1':
+      game = game1;
+      break;
 
-  //   case '400':
-  //     quest = question[1].question;
-  //     break;
+    case '2':
+      game = game2;
+      break;
 
-  //   case '600':
-  //     quest = question[2].question;
-  //     break;
+    case '3':
+      game = game3;
+      break;
 
-  //   case '800':
-  //     quest = question[3].question;
-  //     break;
+    case '4':
+      game = game4;
+      break;
 
-  //   default:
-  //     break;
-  // }
+    case '5':
+      game = game5;
+      break;
+    default:
+      break;
+  }
+
+  switch (score) {
+    case '200':
+      question = game[0].question;
+      break;
+    case '400':
+      question = game[1].question;
+      break;
+
+    case '600':
+      question = game[2].question;
+      break;
+
+    case '800':
+      question = game[3].question;
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <>
@@ -36,7 +65,7 @@ const Score = ({ score /* question */ }) => {
         {score}
       </div>
       <Modal
-        // question={quest}
+        question={question}
         isOpened={modal}
         onModalClose={() => setModal(false)}
       />

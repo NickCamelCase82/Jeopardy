@@ -1,86 +1,108 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './Game.css';
 import Category from '../Сategory/Сategory';
 import Score from '../Score/Score';
 // import Modal from '../../Modal/Modal';
 
 const Game = () => {
-  // const [modal, setModal] = useState(false);
-  const [title1, setTitle1] = useState('');
-  const [title2, setTitle2] = useState('');
-  const [title3, setTitle3] = useState('');
-  const [title4, setTitle4] = useState('');
-  const [title5, setTitle5] = useState('');
-  const [question1, setQuestion1] = useState([]);
+  const dispatch = useDispatch();
+  const game1 = useSelector((store) => store.game1);
+  const game2 = useSelector((store) => store.game2);
+  const game3 = useSelector((store) => store.game3);
+  const game4 = useSelector((store) => store.game4);
+  const game5 = useSelector((store) => store.game5);
+  const store = useSelector((store) => store);
+  const [loading, setLoading] = useState(true);
 
+  console.log('------------->', store);
   useEffect(() => {
-    (async () => {
-      const game1 = await fetch('http://localhost:3001/game1');
-      const resultGame1 = await game1.json();
-      setTitle1(resultGame1[0].category);
-      setQuestion1(resultGame1);
-      console.log(resultGame1);
+    fetch('http://localhost:3001/game1')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('data===========>', data);
+        dispatch({ type: 'SET_GAME', payload: data });
+      });
 
-      const game2 = await fetch('http://localhost:3001/game2');
-      const resultGame2 = await game2.json();
-      setTitle2(resultGame2[0].category);
+    fetch('http://localhost:3001/game2')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('data===========>', data);
+        dispatch({ type: 'SET_GAME2', payload: data });
+      });
 
-      const game3 = await fetch('http://localhost:3001/game3');
-      const resultGame3 = await game3.json();
-      setTitle3(resultGame3[0].category);
+    fetch('http://localhost:3001/game3')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('data===========>', data);
+        dispatch({ type: 'SET_GAME3', payload: data });
+      });
 
-      const game4 = await fetch('http://localhost:3001/game4');
-      const resultGame4 = await game4.json();
-      setTitle4(resultGame4[0].category);
+    fetch('http://localhost:3001/game4')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('data===========>', data);
+        dispatch({ type: 'SET_GAME4', payload: data });
+      });
 
-      const game5 = await fetch('http://localhost:3001/game5');
-      const resultGame5 = await game5.json();
-      setTitle5(resultGame5[0].category);
-    })();
+    fetch('http://localhost:3001/game5')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('data===========>', data);
+        dispatch({ type: 'SET_GAME5', payload: data });
+        setLoading(false);
+      });
   }, []);
 
-  // const game1 = await fetch('http://localhost:3001/game1');
-  // const resultGame1 = await game1.json();
-  // const title1 = resultGame1[0].category;
-  // console.log('title1-------------', title1);
-  // console.log('game---------------', resultGame1);
+  console.log('loading------>', loading);
 
-  // const game2 = fetch('http://localhost:3001/game2')
-  //   .then((data) => data.json())
-  //   .then((data) => console.log(data));
+  // const [modal, setModal] = useState(false);
 
   return (
     <div className="game">
-      <div className="game-item">
-        <Category title={title1} />
-        {['200', '400', '600', '800'].map((score, index) => (
-          <Score score={score} question={question1} key={index + 1} />
-        ))}
-      </div>
-      <div className="game-item">
-        <Category title={title2} />
-        {['200', '400', '600', '800'].map((score, index) => (
-          <Score score={score} key={index + 1} />
-        ))}
-      </div>
-      <div className="game-item">
-        <Category title={title3} />
-        {['200', '400', '600', '800'].map((score, index) => (
-          <Score score={score} key={index + 1} />
-        ))}
-      </div>
-      <div className="game-item">
-        <Category title={title4} />
-        {['200', '400', '600', '800'].map((score, index) => (
-          <Score score={score} key={index + 1} />
-        ))}
-      </div>
-      <div className="game-item">
-        <Category title={title5} />
-        {['200', '400', '600', '800'].map((score, index) => (
-          <Score score={score} key={index + 1} />
-        ))}
-      </div>
+      {loading ? (
+        'идет загрузка'
+      ) : (
+        <>
+          <div className="game-item">
+            <Category title={game1 && game1[0].category} />
+            {['200', '400', '600', '800'].map((score, index) => (
+              <Score score={score} key={index + 1} category="1" />
+            ))}
+          </div>
+          <div className="game-item">
+            <Category title={game2 && game2[0].category} />
+            {['200', '400', '600', '800'].map((score, index) => (
+              <Score score={score} key={index + 1} category="2" />
+            ))}
+          </div>
+          <div className="game-item">
+            <Category title={game3 && game3[0].category} />
+            {['200', '400', '600', '800'].map((score, index) => (
+              <Score score={score} key={index + 1} category="3" />
+            ))}
+          </div>
+          <div className="game-item">
+            <Category title={game4 && game4[0].category} />
+            {['200', '400', '600', '800'].map((score, index) => (
+              <Score score={score} key={index + 1} category="4" />
+            ))}
+          </div>
+          <div className="game-item">
+            <Category title={game5 && game5[0].category} />
+            {['200', '400', '600', '800'].map((score, index) => (
+              <Score score={score} key={index + 1} category="5" />
+            ))}
+          </div>
+          {/* <Modal
+          question="Тут будет вопрос?"
+          isOpened={modal}
+          onModalClose={() => setModal(false)}
+        /> */}
+        </>
+      )}
     </div>
   );
 };
