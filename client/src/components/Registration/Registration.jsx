@@ -1,17 +1,40 @@
 import { React } from 'react';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
+import { useSelector, useDispatch } from 'react-redux';
 import './Registration.css';
 
-const Registration = ({getReg, input, handleInputs}) => {
+const Registration = ({getReg}) => {
+
+  const input = useSelector(store => store.inputs);
+  const dispatch = useDispatch();
+
   return (
     <div className="register">
       <form>
         <div>Регистрация</div>
-        <input name="login" placeholder="Введите логин" onChange={handleInputs} value={input.login?? ''}/>
-        <input name="email" placeholder="Введите емаил" onChange={handleInputs} value={input.email?? ''}/>
-        <input type="password" name="password" placeholder="Введите пароль" onChange={handleInputs} value={input.password?? ''}/>
-        <button onClick={getReg}/>
+
+        <Input 
+        type="text"
+        name="login" 
+        placeholder="Введите логин" 
+        onChange={(event) => dispatch({ type: 'INPUT_TYPING', payload: { [event.target.name]: event.target.value } })} 
+        value={input.login?? ''}/>
+
+        <Input 
+        type="email"
+        name="email" 
+        placeholder="Введите емаил" 
+        onChange={(event) => dispatch({ type: 'INPUT_TYPING', payload: { [event.target.name]: event.target.value } })} 
+        value={input.email?? ''}/>
+
+        <Input 
+        type="password" 
+        name="password" 
+        placeholder="Введите пароль" 
+        onChange={(event) => dispatch({ type: 'INPUT_TYPING', payload: { [event.target.name]: event.target.value } })} />
+
+        <Button onClick={getReg}/>
       </form>
     </div>
   );
