@@ -1,4 +1,5 @@
 import React from 'react';
+import Game from './components/game/Game/Game';
 import { Routes, Route } from 'react-router-dom';
 import PageLogin from './pages/PageLogin';
 import PageRegistration from './pages/PageRegistration';
@@ -9,7 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const dispatch = useDispatch();
-
+console.log("App")
   useEffect(() => {
     fetch('http://localhost:3001/session', {
       credentials: 'include',
