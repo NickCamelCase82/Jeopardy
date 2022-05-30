@@ -10,7 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const dispatch = useDispatch();
-
+  console.log('App');
   useEffect(() => {
     fetch('http://localhost:3001/session', {
       credentials: 'include',

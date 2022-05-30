@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import './Navbar.css';
 
 export default function Navbar() {
@@ -18,31 +19,37 @@ export default function Navbar() {
 
   return (
     <div className="navbarMenu">
-      {user.id ? (
-        <>
-          <Link className="btn btn-outline-primary" to="/game">
-            Играть
-          </Link>
-          <Link className="btn btn-outline-primary" to="/" onClick={getlogout}>
-            Выйти
-          </Link>
-        </>
-      ) : (
-        <>
-          <Link className="btn btn-outline-primary" to="/game">
-            Играть
-          </Link>
-          <Link className="btn btn-outline-primary" to="/login">
-            Войти
-          </Link>
-          <Link
-            className="regButton btn btn-outline-primary"
-            to="/registration"
-          >
-            Регистрация
-          </Link>
-        </>
-      )}
+      <div className="nav">
+        {user.id ? (
+          <>
+            <Link className="btn btn-outline-primary" to="/game">
+              Играть
+            </Link>
+            <Link
+              className="btn btn-outline-primary"
+              to="/"
+              onClick={getlogout}
+            >
+              Выйти
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link className="btn btn-outline-primary" to="/game">
+              Играть
+            </Link>
+            <Link className="btn btn-outline-primary" to="/login">
+              Войти
+            </Link>
+            <Link
+              className="regButton btn btn-outline-primary"
+              to="/registration"
+            >
+              Регистрация
+            </Link>
+          </>
+        )}
+      </div>
     </div>
   );
 }
